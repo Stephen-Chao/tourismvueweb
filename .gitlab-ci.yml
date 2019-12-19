@@ -1,0 +1,26 @@
+# Node docker image on which this would be run
+image: node:latest
+
+# Pipeline:
+stages:
+  - install
+  - build
+
+install_dependencies:
+  stage: install
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
+
+# Jobs:
+build:
+  stage: build
+  script:
+    - npm install
+    - npm build
+  artifacts:
+    paths:
+      - dist/
+
